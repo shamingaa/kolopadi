@@ -1,0 +1,16 @@
+{
+  "chainId": 10143,
+  "chainName": "Monad Testnet",
+  "rpcUrl": "https://testnet-rpc.monad.xyz",
+  "explorerUrl": "https://testnet.monadvision.com",
+  "nativeCurrency": {
+    "name": "MON",
+    "symbol": "MON",
+    "decimals": 18
+  },
+  "contractAddress": "0xa8192d2632Ede7EF89ccfe88B4c86F5Ba190d2a4",
+  "deployTxHash": "0x26f85c6d3218753026a33dbedc8ba1a907460e859f0990eb866ede6118a779cd",
+  "deployedAt": "2026-07-15",
+  "verified": true,
+  "verifier": "sourcify"
+}
