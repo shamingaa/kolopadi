@@ -84,7 +84,9 @@ export function Home({ onCreateNew }: { onCreateNew: () => void }) {
       </div>
 
       <p className="muted">
-        Padi: {shortAddress(kolo.padi)} · epoch {(currentEpoch ?? 0n).toString()} of {kolo.durationEpochs.toString()}
+        Padi: {shortAddress(kolo.padi)} · epoch{" "}
+        {(currentEpoch !== undefined && currentEpoch < kolo.durationEpochs ? currentEpoch : kolo.durationEpochs).toString()}{" "}
+        of {kolo.durationEpochs.toString()}
       </p>
 
       {kolo.status === KoloStatus.Active && !durationElapsed && (

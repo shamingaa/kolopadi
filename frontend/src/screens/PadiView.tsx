@@ -69,7 +69,9 @@ export function PadiView() {
       </div>
 
       <p className="muted">
-        Epoch {(currentEpoch ?? 0n).toString()} of {kolo.durationEpochs.toString()}
+        Epoch{" "}
+        {(currentEpoch !== undefined && currentEpoch < kolo.durationEpochs ? currentEpoch : kolo.durationEpochs).toString()}{" "}
+        of {kolo.durationEpochs.toString()}
       </p>
 
       {kolo.status === KoloStatus.Active && (

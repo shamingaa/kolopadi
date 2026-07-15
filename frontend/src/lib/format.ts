@@ -1,10 +1,14 @@
 import { formatEther, parseEther } from "viem";
 
-export function formatMon(wei: bigint | undefined, maxDecimals = 4): string {
+export function formatMon(wei: bigint | undefined, maxDecimals?: number): string {
   if (wei === undefined) return "0";
   const asString = formatEther(wei);
   const [whole, frac = ""] = asString.split(".");
-  const trimmedFrac = frac.slice(0, maxDecimals).replace(/0+$/, "");
+  // Sub-1-MON amounts (slash bounties, small deposits) need more decimal
+  // places or they silently round down to "0" - a real bug an earlier
+  // end-to-end test caught (a 0.00002 MON bounty displayed as "0 MON").
+  const decimals = maxDecimals ?? (whole === "0" ? 6 : 4);
+  const trimmedFrac = frac.slice(0, decimals).replace(/0+$/, "");
   return trimmedFrac ? `${whole}.${trimmedFrac}` : whole;
 }
 
