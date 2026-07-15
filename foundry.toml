@@ -4,3 +4,11 @@ out = "out"
 libs = ["lib"]
 
 # See more config options https://github.com/foundry-rs/foundry/blob/master/crates/config/README.md#all-options
+
+[rpc_endpoints]
+monad_testnet = "${MONAD_TESTNET_RPC_URL}"
+
+[etherscan]
+# Used by `forge verify-contract` when targeting Monadscan (Etherscan-style explorer).
+# Sourcify verification (MonadVision) doesn't need this section at all.
+monad_testnet = { key = "${MONADSCAN_API_KEY}", chain = 10143, url = "https://api.monadscan.com/api" }
