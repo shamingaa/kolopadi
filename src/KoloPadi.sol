@@ -24,7 +24,6 @@ contract KoloPadi {
         Active, // still being fed, not finished yet
         Broken, // owner broke it early
         Claimed // owner finished the full duration and withdrew everything
-
     }
 
     /// @notice One savings pot. Deliberately holds no mappings inside it, because Solidity
@@ -139,6 +138,7 @@ contract KoloPadi {
     function createKolo(uint256 depositAmount, uint256 epochLength, uint256 durationEpochs, address padi)
         external
         payable
+        returns (uint256 koloId)
     {
         if (padi == msg.sender) revert PadiCannotBeOwner();
         if (padi == address(0)) revert PadiCannotBeZeroAddress();
@@ -147,7 +147,7 @@ contract KoloPadi {
         if (depositAmount == 0) revert DepositAmountMustBePositive();
         if (msg.value != depositAmount) revert IncorrectDepositValue();
 
-        uint256 koloId = nextKoloId++;
+        koloId = nextKoloId++;
 
         kolos[koloId] = Kolo({
             owner: msg.sender,
