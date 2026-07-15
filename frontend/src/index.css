@@ -1,0 +1,122 @@
+:root {
+  /* Clay + sand palette. Warm, earthy, unglazed pottery, not SaaS-purple. */
+  --clay-900: #3b2417;
+  --clay-700: #6b4226;
+  --clay-600: #8c3a22;
+  --clay-500: #c1502e;
+  --clay-400: #d97b4f;
+  --clay-300: #e8a37c;
+
+  --sand-100: #fbf3e7;
+  --sand-200: #f3e3cb;
+  --sand-300: #ead3ac;
+  --sand-400: #dbb98a;
+
+  --gold-500: #d9a441;
+  --moss-500: #6b8e4e;
+  --moss-600: #4f6b38;
+  --rust-600: #9c3b2e;
+  --rust-700: #7a2c22;
+
+  --bg: var(--sand-200);
+  --card: var(--sand-100);
+  --ink: var(--clay-900);
+  --ink-soft: var(--clay-700);
+  --border: var(--sand-400);
+  --shadow-clay: 0 6px 0 rgba(59, 36, 23, 0.12), 0 14px 24px rgba(59, 36, 23, 0.14);
+
+  --display: "Fraunces", ui-serif, Georgia, serif;
+  --sans: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  color-scheme: light;
+  font-family: var(--sans);
+  color: var(--ink);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #241811;
+    --card: #2e1f16;
+    --ink: #f3e3cb;
+    --ink-soft: #d9b98f;
+    --border: #4a3626;
+    --shadow-clay: 0 6px 0 rgba(0, 0, 0, 0.3), 0 14px 24px rgba(0, 0, 0, 0.35);
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+body {
+  background: var(--bg);
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.4), transparent 45%),
+    radial-gradient(circle at 80% 70%, rgba(140, 58, 34, 0.06), transparent 50%);
+  min-height: 100svh;
+  position: relative;
+}
+
+/* Subtle unglazed-clay grain, layered over everything. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.5;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.24 0 0 0 0 0.14 0 0 0 0 0.09 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+@media (prefers-color-scheme: dark) {
+  body::before {
+    opacity: 0.35;
+    mix-blend-mode: overlay;
+  }
+}
+
+#root {
+  position: relative;
+  z-index: 1;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--display);
+  color: var(--ink);
+  margin: 0;
+  font-weight: 600;
+}
+
+p {
+  margin: 0;
+  color: var(--ink-soft);
+}
+
+button {
+  font-family: var(--sans);
+}
+
+a {
+  color: inherit;
+}
+
+/* Hand-thrown, not-quite-perfect rounding used across cards/buttons. */
+.organic {
+  border-radius: 42% 58% 61% 39% / 46% 40% 60% 54%;
+}
