@@ -151,7 +151,7 @@ export function Home({ onCreateNew }: { onCreateNew: () => void }) {
       )}
 
       {kolo.status === KoloStatus.Claimed && (
-        <p className="callout callout--success">You finish this kolo well well. Full payout don land.</p>
+        <p className="callout callout--success">Kolo complete, full payout landed!</p>
       )}
 
       {kolo.status !== KoloStatus.Active && (
