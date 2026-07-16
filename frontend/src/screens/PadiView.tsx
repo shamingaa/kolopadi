@@ -37,8 +37,8 @@ export function PadiView() {
     return (
       <div className="screen screen--center">
         <KoloPot fillPercent={0} status="empty" size={160} />
-        <h2>Nobody don name you padi</h2>
-        <p className="muted">Once a friend creates a kolo and names you as their padi, their pot go show here.</p>
+        <h2>You're not watching anyone's kolo yet</h2>
+        <p className="muted">Once a friend names you as their padi, you'll see their pot here and you can catch them if they slip.</p>
       </div>
     );
   }
