@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useWaitForTransactionReceipt, useWriteContract } from "wagmi";
 
 /// Thin wrapper around wagmi's write + wait-for-receipt hooks, so every
@@ -18,10 +18,19 @@ export function useTxState(onConfirmed?: () => void) {
     },
   });
 
+  const onConfirmedRef = useRef(onConfirmed);
+  onConfirmedRef.current = onConfirmed;
+
   useEffect(() => {
-    if (isConfirmed) onConfirmed?.();
-    // Only re-run when the confirmation flips, not on every onConfirmed identity change.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    if (!isConfirmed) return;
+    onConfirmedRef.current?.();
+    // The RPC node serving reads can lag a moment behind the node that just
+    // accepted the write, so an immediate refetch can still see stale state
+    // (this is exactly what caused a "Claim" button to stick around after a
+    // successful claim). Refetch once more shortly after as a self-healing
+    // safety net.
+    const id = setTimeout(() => onConfirmedRef.current?.(), 2500);
+    return () => clearTimeout(id);
   }, [isConfirmed]);
 
   return {
