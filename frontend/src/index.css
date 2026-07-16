@@ -25,6 +25,18 @@
   --border: var(--sand-400);
   --shadow-clay: 0 6px 0 rgba(59, 36, 23, 0.12), 0 14px 24px rgba(59, 36, 23, 0.14);
 
+  /* Semantic tokens for status callouts and the tab bar - kept separate
+     from the raw moss/rust swatches so light and dark mode can each pick
+     values with enough contrast against their own background, instead of
+     a translucent wash that blends into whatever's behind it. */
+  --success-bg: rgba(107, 142, 78, 0.22);
+  --success-text: #3d5429;
+  --success-border: var(--moss-600);
+  --danger-bg: rgba(156, 59, 46, 0.16);
+  --danger-text: #6b241a;
+  --danger-border: var(--rust-700);
+  --tab-bar-bg: var(--sand-400);
+
   --display: "Fraunces", ui-serif, Georgia, serif;
   --sans: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
 
@@ -44,6 +56,14 @@
     --ink-soft: #d9b98f;
     --border: #4a3626;
     --shadow-clay: 0 6px 0 rgba(0, 0, 0, 0.3), 0 14px 24px rgba(0, 0, 0, 0.35);
+
+    --success-bg: rgba(139, 181, 107, 0.2);
+    --success-text: #a8d68a;
+    --success-border: #8bb56b;
+    --danger-bg: rgba(224, 120, 100, 0.2);
+    --danger-text: #f0a894;
+    --danger-border: #e07864;
+    --tab-bar-bg: #3a2a1c;
   }
 }
 

@@ -55,9 +55,10 @@
   gap: 6px;
   padding: 4px;
   margin: 0 auto 20px;
-  background: var(--sand-300);
+  background: var(--tab-bar-bg);
   border-radius: 999px;
   width: fit-content;
+  box-shadow: var(--shadow-clay);
 }
 
 .tabs__tab {
@@ -65,9 +66,9 @@
   background: transparent;
   padding: 9px 20px;
   border-radius: 999px;
-  font-weight: 600;
+  font-weight: 700;
   font-size: 14px;
-  color: var(--ink-soft);
+  color: var(--ink);
   cursor: pointer;
 }
 
@@ -255,17 +256,21 @@
   border-radius: 14px;
   padding: 12px 16px;
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 700;
+  border-left: 4px solid transparent;
+  box-shadow: 0 2px 8px rgba(59, 36, 23, 0.1);
 }
 
 .callout--success {
-  background: rgba(107, 142, 78, 0.15);
-  color: var(--moss-600);
+  background: var(--success-bg);
+  color: var(--success-text);
+  border-left-color: var(--success-border);
 }
 
 .callout--danger {
-  background: rgba(156, 59, 46, 0.12);
-  color: var(--rust-700);
+  background: var(--danger-bg);
+  color: var(--danger-text);
+  border-left-color: var(--danger-border);
 }
 
 /* ---------- Kolo pot ---------- */
