@@ -23,7 +23,8 @@ export function BreakKoloDialog({ koloId, totalSaved, onClose, onBroken }: Break
       <div className="dialog">
         <h2>You wan break your kolo?</h2>
         <p>
-          You go lose 10% to your padi as penalty. E better make you finish am, but nobody go trap your money.
+          You'll lose 10% to your padi as a penalty. It's better to finish if you can, but your money is never
+          trapped, you can always break it early.
         </p>
         <div className="dialog__split">
           <div>

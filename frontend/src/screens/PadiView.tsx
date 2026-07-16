@@ -81,7 +81,7 @@ export function PadiView() {
               Your padi missed epoch {nextSlashableEpoch}! Catch am and collect {formatMon(bounty)} MON.
             </p>
           ) : (
-            <p className="callout callout--success">Your padi dey correct - no miss to catch right now.</p>
+            <p className="callout callout--success">Your friend's on track, nothing to catch right now.</p>
           )}
 
           <button
