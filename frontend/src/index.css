@@ -4,6 +4,7 @@
   --clay-700: #6b4226;
   --clay-600: #8c3a22;
   --clay-500: #c1502e;
+  --clay-450: #ab4527;
   --clay-400: #d97b4f;
   --clay-300: #e8a37c;
 
@@ -19,23 +20,28 @@
   --rust-700: #7a2c22;
 
   --bg: var(--sand-200);
-  --card: var(--sand-100);
+  --paper: #fffcf6;
+  --card: var(--paper);
   --ink: var(--clay-900);
-  --ink-soft: var(--clay-700);
-  --border: var(--sand-400);
-  --shadow-clay: 0 6px 0 rgba(59, 36, 23, 0.12), 0 14px 24px rgba(59, 36, 23, 0.14);
+  --ink-soft: #8a6a52;
+  --border: rgba(59, 36, 23, 0.12);
+  --border-strong: rgba(59, 36, 23, 0.2);
 
-  /* Semantic tokens for status callouts and the tab bar - kept separate
-     from the raw moss/rust swatches so light and dark mode can each pick
-     values with enough contrast against their own background, instead of
-     a translucent wash that blends into whatever's behind it. */
-  --success-bg: rgba(107, 142, 78, 0.22);
+  /* Soft, diffused elevation instead of a hard offset "pressed button"
+     shadow - the thing that most reads as premium vs. playful/toy-like. */
+  --shadow-xs: 0 1px 2px rgba(59, 36, 23, 0.05);
+  --shadow-sm: 0 1px 3px rgba(59, 36, 23, 0.05), 0 6px 16px rgba(59, 36, 23, 0.06);
+  --shadow-md: 0 4px 10px rgba(59, 36, 23, 0.06), 0 16px 32px rgba(59, 36, 23, 0.08);
+  --shadow-lg: 0 8px 16px rgba(59, 36, 23, 0.08), 0 32px 64px rgba(59, 36, 23, 0.16);
+
+  /* Status badges: solid, muted pastel fills read as clean/premium; a
+     translucent color wash or a colored border bar reads as an alert
+     widget bolted onto the page. */
+  --success-bg: #e6ecd9;
   --success-text: #3d5429;
-  --success-border: var(--moss-600);
-  --danger-bg: rgba(156, 59, 46, 0.16);
-  --danger-text: #6b241a;
-  --danger-border: var(--rust-700);
-  --tab-bar-bg: var(--sand-400);
+  --danger-bg: #f4ded4;
+  --danger-text: #7a2c22;
+  --tab-bar-bg: var(--sand-300);
 
   --display: "Fraunces", ui-serif, Georgia, serif;
   --sans: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -50,20 +56,24 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #241811;
-    --card: #2e1f16;
-    --ink: #f3e3cb;
-    --ink-soft: #d9b98f;
-    --border: #4a3626;
-    --shadow-clay: 0 6px 0 rgba(0, 0, 0, 0.3), 0 14px 24px rgba(0, 0, 0, 0.35);
+    --bg: #201409;
+    --paper: #2b1c11;
+    --card: var(--paper);
+    --ink: #f6e9d6;
+    --ink-soft: #b99872;
+    --border: rgba(246, 233, 214, 0.1);
+    --border-strong: rgba(246, 233, 214, 0.18);
 
-    --success-bg: rgba(139, 181, 107, 0.2);
+    --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.25);
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3), 0 6px 16px rgba(0, 0, 0, 0.25);
+    --shadow-md: 0 4px 10px rgba(0, 0, 0, 0.3), 0 16px 32px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.32), 0 32px 64px rgba(0, 0, 0, 0.4);
+
+    --success-bg: rgba(139, 181, 107, 0.16);
     --success-text: #a8d68a;
-    --success-border: #8bb56b;
-    --danger-bg: rgba(224, 120, 100, 0.2);
+    --danger-bg: rgba(224, 120, 100, 0.16);
     --danger-text: #f0a894;
-    --danger-border: #e07864;
-    --tab-bar-bg: #3a2a1c;
+    --tab-bar-bg: #35240f;
   }
 }
 
@@ -94,14 +104,14 @@ body::before {
   inset: 0;
   pointer-events: none;
   z-index: 0;
-  opacity: 0.5;
+  opacity: 0.35;
   mix-blend-mode: multiply;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.24 0 0 0 0 0.14 0 0 0 0 0.09 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 @media (prefers-color-scheme: dark) {
   body::before {
-    opacity: 0.35;
+    opacity: 0.25;
     mix-blend-mode: overlay;
   }
 }

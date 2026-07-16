@@ -12,7 +12,6 @@ export function ConnectWallet() {
   if (isConnected && address) {
     return (
       <button className="wallet-pill" onClick={() => disconnect()} title="Disconnect wallet">
-        <span className="wallet-dot" />
         {shortenAddress(address)}
       </button>
     );

@@ -19,7 +19,7 @@ function App() {
     <>
       <header className="app-header">
         <div className="app-header__brand">
-          <KoloPot fillPercent={62} status="active" size={40} />
+          <KoloPot fillPercent={62} status="active" size={34} />
           <span className="app-header__wordmark">KoloPadi</span>
         </div>
         <ConnectWallet />

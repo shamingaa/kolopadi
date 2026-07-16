@@ -53,8 +53,8 @@ export function KoloPot({ fillPercent, status, size = 220 }: KoloPotProps) {
 
       <g className={isBroken ? "kolo-pot__shard kolo-pot__shard--left" : undefined}>
         <path d={POT_PATH} fill="url(#clayGradient)" />
-        {!isEmpty && (
-          <g clipPath="url(#potClip)">
+        <g clipPath="url(#potClip)">
+          {!isEmpty && (
             <rect
               className="kolo-pot__liquid"
               x="0"
@@ -63,9 +63,11 @@ export function KoloPot({ fillPercent, status, size = 220 }: KoloPotProps) {
               height={220 - fillTop}
               fill={isClaimed ? "var(--moss-500)" : "url(#fillGradient)"}
             />
-          </g>
-        )}
-        <path d={POT_PATH} fill="none" stroke="var(--clay-900)" strokeWidth="2.5" opacity="0.35" />
+          )}
+          {/* Soft ceramic sheen - the detail that reads as "glazed pottery" rather than a flat icon. */}
+          <ellipse cx="66" cy="62" rx="20" ry="30" fill="#fff" opacity="0.14" />
+        </g>
+        <path d={POT_PATH} fill="none" stroke="var(--clay-900)" strokeWidth="1.5" opacity="0.18" />
       </g>
 
       {isBroken && (
