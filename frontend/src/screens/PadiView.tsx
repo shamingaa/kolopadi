@@ -28,7 +28,7 @@ export function PadiView() {
   if (isLoadingKoloId || (koloId !== undefined && isLoadingKolo && !kolo)) {
     return (
       <div className="screen screen--center">
-        <p className="muted">Checking if you dey padi for anybody...</p>
+        <p className="muted">Checking if you're anyone's padi...</p>
       </div>
     );
   }
