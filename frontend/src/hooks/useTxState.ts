@@ -9,7 +9,8 @@ export function useTxState(onConfirmed?: () => void) {
 
   const {
     isLoading: isConfirming,
-    isSuccess: isConfirmed,
+    isSuccess: receiptFetched,
+    data: receipt,
     error: receiptError,
   } = useWaitForTransactionReceipt({
     hash,
@@ -18,11 +19,22 @@ export function useTxState(onConfirmed?: () => void) {
     },
   });
 
+  // A fetched receipt only means the transaction was MINED, not that it
+  // succeeded - a reverted tx still gets a receipt (status: "reverted"),
+  // fetched without error. Treating "receipt fetched" as "it worked" is
+  // exactly what let a padi's slash attempt on an already-claimed kolo
+  // revert on-chain while the UI showed no error and never refreshed.
+  const isReverted = receiptFetched && receipt?.status === "reverted";
+  const isConfirmed = receiptFetched && receipt?.status === "success";
+
   const onConfirmedRef = useRef(onConfirmed);
   onConfirmedRef.current = onConfirmed;
 
   useEffect(() => {
-    if (!isConfirmed) return;
+    if (!isConfirmed && !isReverted) return;
+    // Refetch on a revert too - the on-chain state didn't change, but ours
+    // might be stale (e.g. someone else changed it first), so re-syncing
+    // is what makes a now-invalid button correctly disable itself.
     onConfirmedRef.current?.();
     // The RPC node serving reads can lag a moment behind the node that just
     // accepted the write, so an immediate refetch can still see stale state
@@ -31,7 +43,7 @@ export function useTxState(onConfirmed?: () => void) {
     // safety net.
     const id = setTimeout(() => onConfirmedRef.current?.(), 2500);
     return () => clearTimeout(id);
-  }, [isConfirmed]);
+  }, [isConfirmed, isReverted]);
 
   return {
     writeContract,
@@ -39,8 +51,9 @@ export function useTxState(onConfirmed?: () => void) {
     isSigning,
     isConfirming,
     isConfirmed,
+    isReverted,
     isBusy: isSigning || isConfirming,
-    error: error ?? receiptError,
+    error: error ?? receiptError ?? (isReverted ? new Error("Transaction reverted on-chain - this action is no longer valid.") : undefined),
     hash,
     reset,
   };
