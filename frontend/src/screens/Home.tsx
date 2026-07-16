@@ -52,8 +52,8 @@ export function Home({ onCreateNew }: { onCreateNew: () => void }) {
     return (
       <div className="screen screen--center">
         <KoloPot fillPercent={0} status="empty" size={160} />
-        <h2>You no get kolo yet</h2>
-        <p className="muted">Start one today - small small dey fill the pot.</p>
+        <h2>You don't have a kolo yet</h2>
+        <p className="muted">Start one today - little by little, the pot fills up.</p>
         <button className="btn btn--primary" onClick={onCreateNew}>
           Start your kolo
         </button>
@@ -127,7 +127,7 @@ export function Home({ onCreateNew }: { onCreateNew: () => void }) {
 
       {kolo.status === KoloStatus.Active && durationElapsed && (
         <>
-          <p className="callout callout--success">You don finish! Claim your full kolo now.</p>
+          <p className="callout callout--success">You're done! Claim your full kolo now.</p>
           <button
             className="btn btn--primary btn--large"
             disabled={isClaiming}
