@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useReadContracts } from "wagmi";
 import { koloPadiAbi } from "../abi";
 import { KOLOPADI_ADDRESS } from "../config/contract";
@@ -67,6 +67,15 @@ export function useKolo(koloId: bigint | undefined) {
   const currentEpoch = currentEpochResult?.status === "success" ? currentEpochResult.result : undefined;
   const secondsUntilNextEpochOnChain = secondsUntilResult?.status === "success" ? secondsUntilResult.result : undefined;
 
+  const combinedRefetch = () => {
+    refetch();
+    refetchDepositedCurrentEpoch();
+  };
+  // Interval callbacks below close over stale versions of combinedRefetch
+  // otherwise, since we deliberately don't restart the interval every render.
+  const combinedRefetchRef = useRef(combinedRefetch);
+  combinedRefetchRef.current = combinedRefetch;
+
   // Chain-reported seconds-left goes stale between polls, so count it down
   // locally client-side for a smooth ticking timer, then resync on refetch.
   const [secondsUntilNextEpoch, setSecondsUntilNextEpoch] = useState<bigint | undefined>(undefined);
@@ -79,15 +88,21 @@ export function useKolo(koloId: bigint | undefined) {
     if (secondsUntilNextEpoch === undefined) return;
     if (secondsUntilNextEpoch <= 0n) return;
     const id = setInterval(() => {
-      setSecondsUntilNextEpoch((s) => (s !== undefined && s > 0n ? s - 1n : s));
+      setSecondsUntilNextEpoch((s) => {
+        if (s === undefined) return s;
+        if (s <= 1n) {
+          // The countdown just crossed the epoch boundary. Refetch right
+          // away instead of waiting for the next scheduled poll (up to
+          // 15s later), so the Feed button and epoch counter don't lag
+          // behind what actually just happened on chain.
+          combinedRefetchRef.current();
+          return 0n;
+        }
+        return s - 1n;
+      });
     }, 1000);
     return () => clearInterval(id);
   }, [secondsUntilNextEpoch !== undefined]);
-
-  const combinedRefetch = () => {
-    refetch();
-    refetchDepositedCurrentEpoch();
-  };
 
   return { kolo, currentEpoch, secondsUntilNextEpoch, hasDepositedCurrentEpoch, isLoading, refetch: combinedRefetch };
 }
