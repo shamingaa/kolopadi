@@ -41,7 +41,7 @@ export function CreateKolo({ onCreated }: { onCreated: () => void }) {
   return (
     <div className="screen">
       <h2>Start your kolo</h2>
-      <p className="muted">Commit small small. Your padi go watch you.</p>
+      <p className="muted">Commit to small, steady deposits. Your padi will be watching.</p>
 
       <form className="form" onSubmit={handleSubmit}>
         <label className="form__field">
@@ -105,7 +105,7 @@ export function CreateKolo({ onCreated }: { onCreated: () => void }) {
             </button>
           </div>
           {mode === "demo" && (
-            <span className="form__hint">Demo mode dey here so judges fit watch the whole thing live.</span>
+            <span className="form__hint">Demo mode exists so judges can watch the whole lifecycle live.</span>
           )}
         </div>
 
