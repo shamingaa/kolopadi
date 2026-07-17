@@ -41,7 +41,9 @@
   --success-text: #3d5429;
   --danger-bg: #f4ded4;
   --danger-text: #7a2c22;
-  --tab-bar-bg: var(--sand-300);
+  --tab-bar-bg: var(--paper);
+  --tab-active-bg: #ead3ac;
+  --tab-active-text: #35240f;
 
   --display: "Fraunces", ui-serif, Georgia, serif;
   --sans: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -73,7 +75,9 @@
     --success-text: #a8d68a;
     --danger-bg: rgba(224, 120, 100, 0.16);
     --danger-text: #f0a894;
-    --tab-bar-bg: #35240f;
+    --tab-bar-bg: #1a1109;
+    --tab-active-bg: #4a3320;
+    --tab-active-text: #f6e9d6;
   }
 }
 
