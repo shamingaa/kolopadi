@@ -7,7 +7,7 @@ pragma solidity ^0.8.24;
 ///
 /// Plain-English mental model:
 ///   - You lock in a plan: "I will deposit X every `epochLength` seconds, for `durationEpochs` epochs."
-///   - Every deposit IS your check-in. There is no separate "I showed up" button — the chain
+///   - Every deposit IS your check-in. There is no separate "I showed up" button; the chain
 ///     only believes you if MON actually moved.
 ///   - If you miss an epoch, your padi (a friend's wallet you named up front) can call
 ///     `slashMiss` to take 2% of your current pot as a reward for catching you slacking.
@@ -172,7 +172,7 @@ contract KoloPadi {
         emit Deposited(koloId, 0, msg.value, msg.value);
     }
 
-    /// @notice Feed your kolo for the current epoch. This IS your check-in — there's no
+    /// @notice Feed your kolo for the current epoch. This IS your check-in; there's no
     ///         other way to prove you showed up.
     function deposit(uint256 koloId) external payable koloExists(koloId) {
         Kolo storage kolo = kolos[koloId];
@@ -183,7 +183,7 @@ contract KoloPadi {
         uint256 epoch = _currentEpoch(kolo);
         if (epoch >= kolo.durationEpochs) revert KoloDurationEnded();
         // Because `epoch` only ever moves forward with block.timestamp, there is no way to
-        // target a past epoch here — this is what makes "retro-depositing" for a missed day
+        // target a past epoch here, which is what makes "retro-depositing" for a missed day
         // impossible. You can only ever deposit for *right now*.
         if (depositedEpochs[koloId][epoch]) revert EpochAlreadyDeposited();
         if (msg.value != kolo.depositAmount) revert IncorrectDepositValue();
@@ -229,7 +229,7 @@ contract KoloPadi {
     }
 
     /// @notice Break the kolo early. You get 90% back, your padi gets 10%. Funds are never
-    ///         permanently trapped — this is the escape hatch.
+    ///         permanently trapped; this is the escape hatch.
     function breakKolo(uint256 koloId) external nonReentrant koloExists(koloId) {
         Kolo storage kolo = kolos[koloId];
 
