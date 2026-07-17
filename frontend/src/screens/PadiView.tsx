@@ -27,7 +27,7 @@ export function PadiView() {
 
   if (isLoadingKoloId || (koloId !== undefined && isLoadingKolo && !kolo)) {
     return (
-      <div className="screen screen--center">
+      <div className="screen">
         <p className="muted">Checking if you're anyone's padi...</p>
       </div>
     );
@@ -35,7 +35,7 @@ export function PadiView() {
 
   if (koloId === undefined || !kolo) {
     return (
-      <div className="screen screen--center">
+      <div className="screen">
         <KoloPot fillPercent={0} status="empty" size={160} />
         <h2>You're not watching anyone's kolo yet</h2>
         <p className="muted">Once a friend names you as their padi, you'll see their pot here and you can catch them if they slip.</p>
@@ -64,7 +64,7 @@ export function PadiView() {
         </div>
         <div className="stat">
           <span className="stat__value">{kolo.currentStreak.toString()}</span>
-          <span className="stat__label">epoch streak</span>
+          <span className="stat__label">Epoch streak</span>
         </div>
       </div>
 
@@ -106,7 +106,7 @@ export function PadiView() {
 
       {kolo.status === KoloStatus.Broken && <p className="callout callout--danger">This kolo don break already.</p>}
       {kolo.status === KoloStatus.Claimed && (
-        <p className="callout callout--success">Your padi finish their kolo well well.</p>
+        <p className="callout callout--success">Your padi finish their kolo.</p>
       )}
     </div>
   );

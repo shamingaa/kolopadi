@@ -42,7 +42,7 @@ export function Home({ onCreateNew }: { onCreateNew: () => void }) {
 
   if (isLoadingKoloId || (koloId !== undefined && isLoadingKolo && !kolo)) {
     return (
-      <div className="screen screen--center">
+      <div className="screen">
         <p className="muted">Checking for your kolo...</p>
       </div>
     );
@@ -50,10 +50,10 @@ export function Home({ onCreateNew }: { onCreateNew: () => void }) {
 
   if (koloId === undefined || !kolo) {
     return (
-      <div className="screen screen--center">
+      <div className="screen">
         <KoloPot fillPercent={0} status="empty" size={160} />
         <h2>You don't have a kolo yet</h2>
-        <p className="muted">Start one today - little by little, the pot fills up.</p>
+        <p className="muted">Start one today. Little by little, the pot fills up.</p>
         <button className="btn btn--primary" onClick={onCreateNew}>
           Start your kolo
         </button>
@@ -79,7 +79,7 @@ export function Home({ onCreateNew }: { onCreateNew: () => void }) {
         </div>
         <div className="stat">
           <span className="stat__value">{kolo.currentStreak.toString()}</span>
-          <span className="stat__label">epoch streak</span>
+          <span className="stat__label">Epoch streak</span>
         </div>
       </div>
 
@@ -147,7 +147,7 @@ export function Home({ onCreateNew }: { onCreateNew: () => void }) {
       )}
 
       {kolo.status === KoloStatus.Broken && (
-        <p className="callout callout--danger">This kolo don break. You collect your money, padi chop 10%.</p>
+        <p className="callout callout--danger">This kolo is broken. You got your money back, minus 10% to your padi.</p>
       )}
 
       {kolo.status === KoloStatus.Claimed && (
