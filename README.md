@@ -11,7 +11,7 @@ Built for the [Spark hackathon](https://buildanything.so/hackathons/spark) on Bu
 
 ## The problem
 
-Money sitting in a hot wallet doesn't survive impulse spending. It's one tap away from being swapped, sent, or spent on something that isn't the thing you were actually saving for. The physical kolo solved this generations ago with a dumb but effective trick: make the money hard to reach, and make breaking the seal a visible, deliberate act instead of a casual one. KoloPadi is that same trick, onchain, except now the "seal" is a smart contract, and the accountability comes from a friend who can watch your commitment and call you out the moment you miss it.
+I've started more savings goals than I've finished. The pattern is always the same: things go fine until life gets a little stressful or a little exciting, and suddenly the money that was "for something" becomes money that's just... available. My grandmother's kolo never had this problem. You couldn't get the money out without smashing it in front of everyone. KoloPadi rebuilds that same friction onchain, and adds the one thing a clay pot never had: a friend who gets paid to catch you the moment you slip.
 
 ## How it works
 
