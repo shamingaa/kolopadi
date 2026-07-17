@@ -141,6 +141,50 @@
   box-shadow: var(--shadow-sm);
 }
 
+.wallet-connect {
+  position: relative;
+}
+
+.wallet-connect__backdrop {
+  position: fixed;
+  inset: 0;
+  background: transparent;
+  border: none;
+  cursor: default;
+  z-index: 9;
+}
+
+.wallet-connect__menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 6px;
+  min-width: 200px;
+  background: var(--paper);
+  border-radius: 16px;
+  box-shadow: var(--shadow-md);
+}
+
+.wallet-connect__option {
+  border: none;
+  background: transparent;
+  color: var(--ink);
+  text-align: left;
+  padding: 10px 12px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.wallet-connect__option:hover {
+  background: var(--bg);
+}
+
 /* ---------- Buttons ---------- */
 
 .btn {
