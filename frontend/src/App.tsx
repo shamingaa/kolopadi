@@ -7,6 +7,7 @@ import { NetworkGuard } from "./components/NetworkGuard";
 import { CreateKolo } from "./screens/CreateKolo";
 import { Home } from "./screens/Home";
 import { PadiView } from "./screens/PadiView";
+import { useResyncOnWalletChange } from "./hooks/useResyncOnWalletChange";
 
 type Tab = "home" | "padi";
 
@@ -14,6 +15,7 @@ function App() {
   const { isConnected } = useAccount();
   const [tab, setTab] = useState<Tab>("home");
   const [showCreate, setShowCreate] = useState(false);
+  useResyncOnWalletChange();
 
   return (
     <>
