@@ -7,6 +7,8 @@ An onchain kolo you can't sneak into, with a padi who can catch you if you slip.
 
 Built for the [Spark hackathon](https://buildanything.so/hackathons/spark) on BuildAnything.
 
+**Live app:** [kolopadi.vercel.app](https://kolopadi.vercel.app/)
+
 ## The problem
 
 Money sitting in a hot wallet doesn't survive impulse spending. It's one tap away from being swapped, sent, or spent on something that isn't the thing you were actually saving for. The physical kolo solved this generations ago with a dumb but effective trick: make the money hard to reach, and make breaking the seal a visible, deliberate act instead of a casual one. KoloPadi is that same trick, onchain, except now the "seal" is a smart contract, and the accountability comes from a friend who can watch your commitment and call you out the moment you miss it.
@@ -45,6 +47,7 @@ The frontend never shows placeholder data. Every number on screen is a live cont
 
 ## Deployment
 
+- **App:** [kolopadi.vercel.app](https://kolopadi.vercel.app/)
 - **Network:** Monad Testnet (chain id `10143`)
 - **Contract:** [`0xa8192d2632Ede7EF89ccfe88B4c86F5Ba190d2a4`](https://testnet.monadvision.com/address/0xa8192d2632Ede7EF89ccfe88B4c86F5Ba190d2a4)
 - **Verified:** yes, via Sourcify/MonadVision (exact source match)

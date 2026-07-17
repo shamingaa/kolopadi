@@ -32,8 +32,8 @@ function App() {
           <KoloPot fillPercent={70} status="active" size={180} />
           <h1>Save small small. Your padi dey watch.</h1>
           <p className="muted">
-            An onchain kolo you can't sneak into. Miss a day and your padi fit catch you and collect a small
-            reward. Break am early and you go still collect 90%. Finish strong and everything na yours.
+            An onchain kolo you can't sneak into. Miss a day and your padi can catch you and collect a small
+            reward. Break it early and you still get back 90%. Finish strong and everything is yours.
           </p>
           <ConnectWallet />
         </main>
