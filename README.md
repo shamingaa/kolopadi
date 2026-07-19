@@ -13,6 +13,25 @@ Built for the [Spark hackathon](https://buildanything.so/hackathons/spark) on Bu
 
 I've started more savings goals than I've finished. The pattern is always the same: things go fine until life gets a little stressful or a little exciting, and suddenly the money that was "for something" becomes money that's just... available. My grandmother's kolo never had this problem. You couldn't get the money out without smashing it in front of everyone. KoloPadi rebuilds that same friction onchain, and adds the one thing a clay pot never had: a friend who gets paid to catch you the moment you slip.
 
+## Screenshots
+
+<table>
+<tr>
+<td align="center" width="20%"><img src=".github/screenshots/kolo_form.webp" width="180"><br><sub>Create a kolo</sub></td>
+<td align="center" width="20%"><img src=".github/screenshots/kolo_started.webp" width="180"><br><sub>Kolo started</sub></td>
+<td align="center" width="20%"><img src=".github/screenshots/feed_kolo.webp" width="180"><br><sub>Feed it each epoch</sub></td>
+<td align="center" width="20%"><img src=".github/screenshots/padi_slash_kolo.webp" width="180"><br><sub>Padi catches a miss</sub></td>
+<td align="center" width="20%"><img src=".github/screenshots/break_kolo.webp" width="180"><br><sub>Break early (confirm)</sub></td>
+</tr>
+<tr>
+<td align="center"><img src=".github/screenshots/kolo_broken.webp" width="180"><br><sub>Kolo broken</sub></td>
+<td align="center"><img src=".github/screenshots/claim_kolo.webp" width="180"><br><sub>Ready to claim</sub></td>
+<td align="center"><img src=".github/screenshots/kolo_claimed.webp" width="180"><br><sub>Kolo claimed</sub></td>
+<td align="center"><img src=".github/screenshots/padi_default_view.webp" width="180"><br><sub>Padi view, empty</sub></td>
+<td align="center"><img src=".github/screenshots/padi_kolo_finish.webp" width="180"><br><sub>Padi view, kolo finished</sub></td>
+</tr>
+</table>
+
 ## How it works
 
 1. **Create a kolo.** Commit to depositing a fixed amount of MON every epoch, for a set number of epochs, and name a padi: a friend's wallet address. Your first deposit happens in the same transaction, so a kolo never exists with zero money in it.
